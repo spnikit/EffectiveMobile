@@ -16,11 +16,11 @@ export class AppComponent {
 
 /*
 * pick components from material
-* add models
+* add models +
 * add dummy data
 * list component
 * edit component
 * create (via dialog)
 * routing
-*
+* ?ngrx signal store
 * */

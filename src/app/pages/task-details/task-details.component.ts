@@ -2,12 +2,12 @@ import { Component, inject, Input, OnInit } from '@angular/core';
 import { provideNativeDateAdapter } from '@angular/material/core';
 import { TaskService } from '../../services/task.service';
 import { Task } from '../../models/task.model';
-import {DatePipe, JsonPipe} from '@angular/common';
+import { DatePipe } from '@angular/common';
 
 @Component({
   selector: 'app-task-details',
   standalone: true,
-  imports: [JsonPipe, DatePipe],
+  imports: [DatePipe],
   providers: [provideNativeDateAdapter()],
   templateUrl: './task-details.component.html',
   styleUrl: './task-details.component.scss',

@@ -1,10 +1,10 @@
 <h1>Task #{{ id }} Details</h1>
 
-<p>Title: {{ task.title }}</p>
-<p>Name: {{ task.name }}</p>
+<p>Title: {{ task.title || '--' }}</p>
+<p>Name: {{ task.name || '--' }}</p>
 <p>Due To: {{ task.dueTo | date }}</p>
-<p>Priority: {{ task.priority }}</p>
-<p>Status: {{ task.status }}</p>
+<p>Priority: {{ task.priority || '--' }}</p>
+<p>Status: {{ task.status || '--' }}</p>
 <p>Assignees:</p>
 <ul>
   @for (assignee of task.assignees; track assignee.id) {

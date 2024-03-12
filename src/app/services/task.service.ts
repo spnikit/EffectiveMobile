@@ -14,7 +14,9 @@ export class TaskService {
     return this.taskStore().find((task) => task.id === taskID)!;
   }
 
-  createTask(task: Task) {}
+  createTask(task: Task) {
+    this.taskStore.update((store) => [task, ...store]);
+  }
 
   deleteTask(taskID: string) {}
 

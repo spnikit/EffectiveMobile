@@ -1,47 +1,65 @@
 <h1>Task Create</h1>
 
-<mat-form-field>
-  <mat-label>Title</mat-label>
-  <input matInput>
-</mat-form-field>
+<form [formGroup]="form" (ngSubmit)="onSave()" class="create-form">
+  <mat-form-field>
+    <mat-label>Title</mat-label>
+    <input formControlName="title" matInput>
+  </mat-form-field>
 
-<mat-form-field>
-  <mat-label>Name</mat-label>
-  <input matInput>
-</mat-form-field>
+  <mat-form-field>
+    <mat-label>Name</mat-label>
+    <input formControlName="name" matInput>
+  </mat-form-field>
 
-<!--DATE PICKER-->
-<mat-form-field>
-  <mat-label>Choose a date</mat-label>
-  <input matInput [matDatepicker]="picker">
-  <mat-hint>MM/DD/YYYY</mat-hint>
-  <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
-  <mat-datepicker #picker></mat-datepicker>
-</mat-form-field>
+  <!--DATE PICKER-->
+  <mat-form-field>
+    <mat-label>Choose a date</mat-label>
+    <input formControlName="dueDate" matInput [matDatepicker]="picker">
+    <mat-hint>MM/DD/YYYY</mat-hint>
+    <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+    <mat-datepicker #picker></mat-datepicker>
+  </mat-form-field>
 
-<mat-form-field>
-  <mat-label>Favorite food</mat-label>
-  <mat-select>
-    @for (food of [1, 2, 3]; track food) {
-      <mat-option [value]="food">{{ food }}</mat-option>
-    }
-  </mat-select>
-</mat-form-field>
+  <mat-form-field>
+    <mat-label>Priority</mat-label>
+    <mat-select formControlName="priority">
+      @for (val of priority; track val) {
+        <mat-option [value]="val">{{ val }}</mat-option>
+      }
+    </mat-select>
+  </mat-form-field>
 
-<mat-form-field>
-  <mat-label>Favorite food</mat-label>
-  <mat-select>
-    @for (food of [1, 2, 3]; track food) {
-      <mat-option [value]="food">{{ food }}</mat-option>
-    }
-  </mat-select>
-</mat-form-field>
+  <mat-form-field>
+    <mat-label>Status</mat-label>
+    <mat-select formControlName="status">
+      @for (val of status; track val) {
+        <mat-option [value]="val">{{ val }}</mat-option>
+      }
+    </mat-select>
+  </mat-form-field>
 
-<mat-form-field>
-  <mat-label>Favorite food</mat-label>
-  <mat-select>
-    @for (food of [1, 2, 3]; track food) {
-      <mat-option [value]="food">{{ food }}</mat-option>
-    }
-  </mat-select>
-</mat-form-field>
+  <mat-form-field>
+    <mat-label>Assignees</mat-label>
+    <mat-select formControlName="assignees" multiple>
+      @for (assignee of assignees; track assignee.id) {
+        <mat-option [value]="assignee">{{ assignee.name }}</mat-option>
+      }
+    </mat-select>
+  </mat-form-field>
+
+  <div class="actions">
+    <button
+      mat-raised-button
+      color="primary"
+      class="task-create"
+    >Save
+    </button>
+    <button
+      (click)="onCancel()"
+      mat-raised-button
+      color="warn"
+      class="task-create"
+    >Cancel
+    </button>
+  </div>
+</form>

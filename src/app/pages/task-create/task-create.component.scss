@@ -1,5 +1,13 @@
 :host {
+  max-width: 600px;
+}
+
+.create-form {
   display: flex;
   flex-direction: column;
-  max-width: 600px;
+}
+
+.actions {
+  display: flex;
+  column-gap: 10px;
 }

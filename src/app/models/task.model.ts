@@ -13,8 +13,8 @@ export interface Assignee {
   name: string;
 }
 
-type TaskPriority = `${TaskPriorityEnum}`;
-type TaskStatus = `${TaskStatusEnum}`;
+export type TaskPriority = `${TaskPriorityEnum}`;
+export type TaskStatus = `${TaskStatusEnum}`;
 
 export enum TaskPriorityEnum {
   low = 'low',

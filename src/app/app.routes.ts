@@ -7,7 +7,7 @@ export const routes: Routes = [
       import('./pages/main/main.component').then((mod) => mod.MainComponent),
   },
   {
-    path: 'edit',
+    path: 'edit/:id',
     loadComponent: () =>
       import('./pages/task-edit/task-edit.component').then(
         (mod) => mod.TaskEditComponent

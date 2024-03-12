@@ -1,1 +1,9 @@
-<p>task works!</p>
+<mat-card>
+  <mat-card-header>
+    <mat-card-title>{{ task().title }}</mat-card-title>
+    <mat-card-subtitle>{{ task().name }}</mat-card-subtitle>
+  </mat-card-header>
+  <mat-card-actions>
+    <button mat-button [routerLink]="['/edit', task().id]">EDIT</button>
+  </mat-card-actions>
+</mat-card>

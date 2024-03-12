@@ -10,9 +10,13 @@ export class TaskService {
 
   constructor() {}
 
-  createTask(task: Task) {}
-  deleteTask(taskID: string) {}
-  updateTask(task: Task) {
-
+  getTaskByID(taskID: string): Task {
+    return this.taskStore().find((task) => task.id === taskID)!;
   }
+
+  createTask(task: Task) {}
+
+  deleteTask(taskID: string) {}
+
+  updateTask(task: Task) {}
 }

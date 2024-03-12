@@ -8,7 +8,7 @@ export const dummyData: Task[] = [
     dueTo: '2024-03-15',
     priority: 'high',
     status: 'in-progress',
-    assignees: [{ id: '1', name: 'John Doe' }],
+    assignees: [{ id: '1', name: 'John Doe' }, { id: '7', name: 'Olivia Martinez' }],
   },
   {
     id: '2',
@@ -44,7 +44,7 @@ export const dummyData: Task[] = [
     dueTo: '2024-03-18',
     priority: 'high',
     status: 'done',
-    assignees: [{ id: '5', name: 'Eva Brown' }],
+    assignees: [{ id: '5', name: 'Eva Brown' }, { id: '6', name: 'Michael Wilson' }],
   },
   {
     id: '6',

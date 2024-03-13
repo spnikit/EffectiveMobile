@@ -13,3 +13,15 @@ body {
   margin: 0;
   font-family: Roboto, "Helvetica Neue", sans-serif;
 }
+
+.idle {
+  --mdc-chip-elevated-container-color: #ffde03;
+}
+
+.inProgress {
+  --mdc-chip-elevated-container-color: lightblue;
+}
+
+.done {
+  --mdc-chip-elevated-container-color: orange;
+}

@@ -1,4 +1,4 @@
-import { Component, inject } from '@angular/core';
+import { Component, computed, inject } from '@angular/core';
 import { TaskComponent } from '../task/task.component';
 import { TaskService } from '../../services/task.service';
 
@@ -10,5 +10,14 @@ import { TaskService } from '../../services/task.service';
   styleUrl: './task-list.component.scss',
 })
 export class TaskListComponent {
-  taskList = inject(TaskService).taskStore;
+  store = inject(TaskService).taskStore;
+  filteredTasks = computed(() => {
+    const tasks = this.store().tasks;
+    const filters = this.store().filters;
+    if (!filters.statusFilter) {
+      return tasks;
+    }
+
+    return tasks.filter((task) => task.status === filters.statusFilter);
+  });
 }

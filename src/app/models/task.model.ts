@@ -13,6 +13,13 @@ export interface Assignee {
   name: string;
 }
 
+export interface TaskStore {
+  tasks: Task[];
+  filters: {
+    statusFilter?: TaskStatus;
+  };
+}
+
 export type TaskPriority = `${TaskPriorityEnum}`;
 export type TaskStatus = `${TaskStatusEnum}`;
 

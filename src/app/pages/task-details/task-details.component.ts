@@ -6,11 +6,19 @@ import { MatIconButton } from '@angular/material/button';
 import { MatTooltip } from '@angular/material/tooltip';
 import { RouterLink } from '@angular/router';
 import { TaskStore } from '../../store/task.store';
+import {TaskCardComponent} from "../../components/task-card/task-card.component";
 
 @Component({
   selector: 'app-task-details',
   standalone: true,
-  imports: [DatePipe, MatIcon, MatIconButton, MatTooltip, RouterLink],
+  imports: [
+    DatePipe,
+    MatIcon,
+    MatIconButton,
+    MatTooltip,
+    RouterLink,
+    TaskCardComponent,
+  ],
   providers: [provideNativeDateAdapter()],
   templateUrl: './task-details.component.html',
   styleUrl: './task-details.component.scss',

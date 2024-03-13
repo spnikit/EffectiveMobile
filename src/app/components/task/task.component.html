@@ -3,7 +3,10 @@
     <mat-card-title>{{ task().title }}</mat-card-title>
     <mat-card-subtitle>{{ task().name }}</mat-card-subtitle>
   </mat-card-header>
-  <mat-card-actions>
+  <mat-card-actions [align]="'end'">
+    <mat-chip [ngClass]="class">
+      {{ task().status }}
+    </mat-chip>
     <button mat-button [routerLink]="['/details', task().id]">Details</button>
   </mat-card-actions>
 </mat-card>

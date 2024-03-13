@@ -8,8 +8,8 @@ import { MatSelectModule } from '@angular/material/select';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatChip } from '@angular/material/chips';
 import { TaskStatusEnum } from '../../models/task.model';
-import { TaskService } from '../../services/task.service';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
+import { TaskStore } from '../../store/task.store';
 
 @Component({
   selector: 'app-main',
@@ -30,13 +30,14 @@ import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 })
 export class MainComponent implements OnInit {
   filterControl: FormControl<TaskStatusEnum | undefined> = new FormControl();
-  taskService = inject(TaskService);
   protected readonly TaskStatusEnum = TaskStatusEnum;
+
+  #taskStore = inject(TaskStore);
   #destroyRef = inject(DestroyRef);
 
   ngOnInit() {
     this.filterControl.valueChanges
       .pipe(takeUntilDestroyed(this.#destroyRef))
-      .subscribe((filter) => this.taskService.setStatusFilter(filter));
+      .subscribe((filter) => this.#taskStore.setStatusFilter(filter));
   }
 }

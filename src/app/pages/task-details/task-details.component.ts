@@ -1,11 +1,11 @@
 import { Component, computed, inject, input } from '@angular/core';
 import { provideNativeDateAdapter } from '@angular/material/core';
-import { TaskService } from '../../services/task.service';
 import { DatePipe } from '@angular/common';
-import {MatIcon} from "@angular/material/icon";
-import {MatIconButton} from "@angular/material/button";
-import {MatTooltip} from "@angular/material/tooltip";
-import {RouterLink} from "@angular/router";
+import { MatIcon } from '@angular/material/icon';
+import { MatIconButton } from '@angular/material/button';
+import { MatTooltip } from '@angular/material/tooltip';
+import { RouterLink } from '@angular/router';
+import { TaskStore } from '../../store/task.store';
 
 @Component({
   selector: 'app-task-details',
@@ -17,6 +17,6 @@ import {RouterLink} from "@angular/router";
 })
 export class TaskDetailsComponent {
   id = input.required<string>();
-  task = computed(() => this.#taskService.getTaskByID(this.id()));
-  #taskService = inject(TaskService);
+  task = computed(() => this.#taskStore.getTaskByID(this.id()));
+  #taskStore = inject(TaskStore);
 }

@@ -3,14 +3,14 @@
   <mat-icon>arrow_back</mat-icon>
 </button>
 
-<p>Title: {{ task().title || '--' }}</p>
-<p>Name: {{ task().name || '--' }}</p>
-<p>Due To: {{ task().dueTo | date }}</p>
-<p>Priority: {{ task().priority || '--' }}</p>
-<p>Status: {{ task().status || '--' }}</p>
+<p>Title: {{ task()?.title || '--' }}</p>
+<p>Name: {{ task()?.name || '--' }}</p>
+<p>Due To: {{ task()?.dueTo | date }}</p>
+<p>Priority: {{ task()?.priority || '--' }}</p>
+<p>Status: {{ task()?.status || '--' }}</p>
 <p>Assignees:</p>
 <ul>
-  @for (assignee of task().assignees; track assignee.id) {
-    <li>{{ assignee.name }}</li>
+  @for (assignee of task()?.assignees; track assignee?.id) {
+    <li>{{ assignee?.name }}</li>
   }
 </ul>

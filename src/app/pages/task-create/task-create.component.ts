@@ -9,7 +9,7 @@ import { MatInput, MatInputModule } from '@angular/material/input';
 import { MatSelectModule } from '@angular/material/select';
 import { FormBuilder, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { provideNativeDateAdapter } from '@angular/material/core';
-import {MatButton, MatIconButton} from '@angular/material/button';
+import { MatButton, MatIconButton } from '@angular/material/button';
 import {
   Assignee,
   Task,
@@ -19,10 +19,10 @@ import {
   TaskStatusEnum,
 } from '../../models/task.model';
 import { ASSIGNEES, TASK_PRIORITY, TASK_STATUS } from '../../models/constants';
-import { TaskService } from '../../services/task.service';
-import {Router, RouterLink} from '@angular/router';
-import {MatTooltip} from "@angular/material/tooltip";
-import {MatIcon} from "@angular/material/icon";
+import { Router, RouterLink } from '@angular/router';
+import { MatTooltip } from '@angular/material/tooltip';
+import { MatIcon } from '@angular/material/icon';
+import { TaskStore } from '../../store/task.store';
 
 @Component({
   selector: 'app-task-create',
@@ -50,7 +50,7 @@ import {MatIcon} from "@angular/material/icon";
 })
 export class TaskCreateComponent {
   #fb = inject(FormBuilder);
-  #taskService = inject(TaskService);
+  #taskStore = inject(TaskStore);
   #router = inject(Router);
 
   priority: TaskPriority[] = TASK_PRIORITY;
@@ -77,7 +77,7 @@ export class TaskCreateComponent {
         id: crypto.randomUUID(),
         dueTo: this.form.getRawValue().dueDate.toISOString(),
       };
-      this.#taskService.createTask(task);
+      this.#taskStore.createTask(task);
       this.form.reset();
       this.#router.navigate(['/']);
     }

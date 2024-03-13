@@ -1,14 +1,20 @@
-import { Injectable, signal } from '@angular/core';
-import { dummyData } from '../models/dummy.model';
+import { inject, Injectable, signal } from '@angular/core';
 import { Task } from '../models/task.model';
+import { LocalStorageService } from './local-storage.service';
+import { LOCAL_ST_TASK_KEY } from '../models/constants';
 
 @Injectable({
   providedIn: 'root',
 })
 export class TaskService {
-  taskStore = signal(dummyData);
+  taskStore = signal<Task[]>([]);
+  lsService = inject(LocalStorageService);
 
-  constructor() {}
+  constructor() {
+    const localStrgTasks = this.lsService.getTaskList(LOCAL_ST_TASK_KEY);
+
+    this.taskStore.set(localStrgTasks ?? []);
+  }
 
   getTaskByID(taskID: string): Task {
     return this.taskStore().find((task) => task.id === taskID)!;

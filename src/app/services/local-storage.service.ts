@@ -7,7 +7,7 @@ import { Task } from '../models/task.model';
 export class LocalStorageService {
   constructor() {}
 
-  getTaskList(key: string) {
+  getTaskList(key: string): Task[] | null {
     const stringifiedTaskList = localStorage.getItem(key);
 
     if (stringifiedTaskList === null) {

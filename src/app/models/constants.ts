@@ -14,3 +14,4 @@ export const ASSIGNEES: Assignee[] = [
   { id: '9', name: 'Sophia Garcia' },
   { id: '10', name: 'Liam Brown' },
 ];
+export const LOCAL_ST_TASK_KEY = 'task';

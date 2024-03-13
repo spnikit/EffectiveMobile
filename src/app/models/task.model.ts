@@ -34,3 +34,8 @@ export enum TaskStatusEnum {
   inProgress = 'in-progress',
   done = 'done',
 }
+
+export interface TaskStatusOption {
+  label: string;
+  value: TaskStatusEnum;
+}

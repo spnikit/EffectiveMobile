@@ -40,7 +40,7 @@ export class TaskComponent {
       case TaskStatusEnum.idle:
         return 'idle';
       case TaskStatusEnum.inProgress:
-        return 'inProgress';
+        return 'in-progress';
       case TaskStatusEnum.done:
         return 'done';
       default:

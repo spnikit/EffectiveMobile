@@ -1,4 +1,4 @@
-import { Assignee, TaskPriority, TaskStatus } from './task.model';
+import {Assignee, TaskPriority, TaskStatus, TaskStatusEnum} from './task.model';
 
 export const TASK_PRIORITY: TaskPriority[] = ['low', 'medium', 'high'];
 export const TASK_STATUS: TaskStatus[] = ['idle', 'in-progress', 'done'];
@@ -15,3 +15,8 @@ export const ASSIGNEES: Assignee[] = [
   { id: '10', name: 'Liam Brown' },
 ];
 export const LOCAL_ST_TASK_KEY = 'task';
+export const FILTER_STATUS_OPTIONS = [
+  {label: 'Idle', value: TaskStatusEnum.idle},
+  {label: 'In Progress', value: TaskStatusEnum.inProgress},
+  {label: 'Done', value: TaskStatusEnum.done}
+]

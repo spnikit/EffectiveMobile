@@ -1,0 +1,13 @@
+<mat-form-field class="select">
+  <mat-label>Status Filter</mat-label>
+  <mat-select [formControl]="filterControl">
+    <mat-option>--</mat-option>
+    @for (option of filterOptions(); track option.label) {
+      <mat-option [value]="option.value">
+        <mat-chip [class]="option.value">
+          {{ option.label }}
+        </mat-chip>
+      </mat-option>
+    }
+  </mat-select>
+</mat-form-field>

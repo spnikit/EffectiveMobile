@@ -44,6 +44,7 @@ import { TaskService } from '../../services/task.service';
 export class TaskCreateComponent {
   #fb = inject(FormBuilder);
   #taskService = inject(TaskService);
+
   priority: TaskPriority[] = TASK_PRIORITY;
   status: TaskStatus[] = TASK_STATUS;
   assignees: Assignee[] = ASSIGNEES;

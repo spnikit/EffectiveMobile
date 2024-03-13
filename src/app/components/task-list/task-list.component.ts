@@ -1,6 +1,6 @@
-import { Component, computed, inject } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { TaskComponent } from '../task/task.component';
-import { TaskService } from '../../services/task.service';
+import { TaskStore } from '../../store/task.store';
 
 @Component({
   selector: 'app-task-list',
@@ -10,14 +10,5 @@ import { TaskService } from '../../services/task.service';
   styleUrl: './task-list.component.scss',
 })
 export class TaskListComponent {
-  store = inject(TaskService).taskStore;
-  filteredTasks = computed(() => {
-    const tasks = this.store().tasks;
-    const filters = this.store().filters;
-    if (!filters.statusFilter) {
-      return tasks;
-    }
-
-    return tasks.filter((task) => task.status === filters.statusFilter);
-  });
+  filteredTasks = inject(TaskStore).filteredTasks;
 }

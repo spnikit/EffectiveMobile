@@ -29,20 +29,14 @@ import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
   styleUrl: './main.component.scss',
 })
 export class MainComponent implements OnInit {
-  filterControl = new FormControl();
-  protected readonly TaskStatusEnum = TaskStatusEnum;
+  filterControl: FormControl<TaskStatusEnum | undefined> = new FormControl();
   taskService = inject(TaskService);
-  destroyRef = inject(DestroyRef);
+  protected readonly TaskStatusEnum = TaskStatusEnum;
+  #destroyRef = inject(DestroyRef);
 
   ngOnInit() {
     this.filterControl.valueChanges
-      .pipe(takeUntilDestroyed(this.destroyRef))
+      .pipe(takeUntilDestroyed(this.#destroyRef))
       .subscribe((filter) => this.taskService.setStatusFilter(filter));
   }
 }
-
-/*
-* - форм контрол к фильтру
-* - при изменении меняем стейт в сервисе
-* - отображаем отфильтрованные значения
-* */

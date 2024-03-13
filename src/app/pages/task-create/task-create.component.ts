@@ -20,6 +20,7 @@ import {
 } from '../../models/task.model';
 import { ASSIGNEES, TASK_PRIORITY, TASK_STATUS } from '../../models/constants';
 import { TaskService } from '../../services/task.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-task-create',
@@ -44,6 +45,7 @@ import { TaskService } from '../../services/task.service';
 export class TaskCreateComponent {
   #fb = inject(FormBuilder);
   #taskService = inject(TaskService);
+  #router = inject(Router);
 
   priority: TaskPriority[] = TASK_PRIORITY;
   status: TaskStatus[] = TASK_STATUS;
@@ -67,10 +69,11 @@ export class TaskCreateComponent {
       const task: Task = {
         ...this.form.getRawValue(),
         id: crypto.randomUUID(),
-        dueTo: this.form.getRawValue().dueDate.toLocaleString(),
+        dueTo: this.form.getRawValue().dueDate.toISOString(),
       };
       this.#taskService.createTask(task);
       this.form.reset();
+      this.#router.navigate(['/']);
     }
   }
 }

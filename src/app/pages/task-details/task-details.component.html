@@ -1,4 +1,4 @@
-<h1>Task #{{ id() }} Details</h1>
+<h1>Task #{{ id().slice(0, 10) }} Details</h1>
 
 <p>Title: {{ task().title || '--' }}</p>
 <p>Name: {{ task().name || '--' }}</p>

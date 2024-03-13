@@ -21,6 +21,7 @@ export class TaskService {
   }
 
   createTask(task: Task) {
+    this.lsService.setTaskList(LOCAL_ST_TASK_KEY, [task, ...this.taskStore()]);
     this.taskStore.update((store) => [task, ...store]);
   }
 

@@ -1,7 +1,6 @@
-import { Component, inject, input, OnInit } from '@angular/core';
+import { Component, computed, inject, input } from '@angular/core';
 import { provideNativeDateAdapter } from '@angular/material/core';
 import { TaskService } from '../../services/task.service';
-import { Task } from '../../models/task.model';
 import { DatePipe } from '@angular/common';
 
 @Component({
@@ -12,12 +11,8 @@ import { DatePipe } from '@angular/common';
   templateUrl: './task-details.component.html',
   styleUrl: './task-details.component.scss',
 })
-export class TaskDetailsComponent implements OnInit {
-  task!: Task;
+export class TaskDetailsComponent {
   id = input.required<string>();
+  task = computed(() => this.#taskService.getTaskByID(this.id()));
   #taskService = inject(TaskService);
-
-  ngOnInit(): void {
-    this.task = this.#taskService.getTaskByID(this.id());
-  }
 }

@@ -1,5 +1,9 @@
 <h1>Task Create</h1>
 
+<button [routerLink]="['/']" mat-icon-button matTooltip="Back" aria-label="arrow back" class="back-icon">
+  <mat-icon>arrow_back</mat-icon>
+</button>
+
 <form [formGroup]="form" (ngSubmit)="onSave()" class="create-form">
   <mat-form-field>
     <mat-label>Title</mat-label>
@@ -49,6 +53,7 @@
 
   <div class="actions">
     <button
+      [disabled]="form.pristine"
       mat-raised-button
       color="primary"
       class="task-create"

@@ -9,7 +9,7 @@ import { MatInput, MatInputModule } from '@angular/material/input';
 import { MatSelectModule } from '@angular/material/select';
 import { FormBuilder, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { provideNativeDateAdapter } from '@angular/material/core';
-import { MatButton } from '@angular/material/button';
+import {MatButton, MatIconButton} from '@angular/material/button';
 import {
   Assignee,
   Task,
@@ -20,7 +20,9 @@ import {
 } from '../../models/task.model';
 import { ASSIGNEES, TASK_PRIORITY, TASK_STATUS } from '../../models/constants';
 import { TaskService } from '../../services/task.service';
-import { Router } from '@angular/router';
+import {Router, RouterLink} from '@angular/router';
+import {MatTooltip} from "@angular/material/tooltip";
+import {MatIcon} from "@angular/material/icon";
 
 @Component({
   selector: 'app-task-create',
@@ -36,6 +38,10 @@ import { Router } from '@angular/router';
     FormsModule,
     MatButton,
     ReactiveFormsModule,
+    MatIconButton,
+    MatTooltip,
+    MatIcon,
+    RouterLink,
   ],
   providers: [provideNativeDateAdapter()],
 
